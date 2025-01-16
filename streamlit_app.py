@@ -29,20 +29,30 @@ if file1 and file2:
         df2.columns = df2.iloc[0]
         df2 = df2[1:]
 
-        # Acessando o nome dos gestores
-        df1_gestoras = df1["Gestor"].tolist()
-        df2_gestoras = df2["Gestor"].tolist()
+        # Limpando valores nulos nas colunas de interesse
+        df1 = df1[["Gestor", "Total"]].dropna()
+        df2 = df2[["Gestor", "Total"]].dropna()
 
-        # Comparando os nomes dos gestores
-        novo_gestor = set(set(df2_gestoras) - set(df1_gestoras))
-        novo_gestor = {g.strip() for g in novo_gestor}
+        # Garantindo que a coluna "Total" seja numérica
+        df1["Total"] = pd.to_numeric(df1["Total"], errors="coerce")
+        df2["Total"] = pd.to_numeric(df2["Total"], errors="coerce")
+
+        # Criando dicionários de gestor para total
+        df1_dict = dict(zip(df1["Gestor"].str.strip(), df1["Total"]))
+        df2_dict = dict(zip(df2["Gestor"].str.strip(), df2["Total"]))
+
+        # Comparando os nomes dos gestores e valores associados
+        novo_gestor = {gestor: df2_dict[gestor] for gestor in df2_dict if gestor not in df1_dict}
+
+        # Ordenando os resultados pelo valor do Total (decrescente)
+        novo_gestor = dict(sorted(novo_gestor.items(), key=lambda item: item[1], reverse=True))
 
         # Exibindo os resultados
         st.subheader("Resultados")
         if novo_gestor:
-            st.success("Novos Gestores Encontrados:")
-            for gestor in novo_gestor:
-                st.write(f"- {gestor}")
+            st.success("Novos Gestores Encontrados (Ordenados por Total - Decrescente):")
+            for gestor, total in novo_gestor.items():
+                st.write(f"- {gestor}: Total = {total}")
         else:
             st.info("Nenhum novo gestor encontrado.")
 
