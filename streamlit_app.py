@@ -54,7 +54,7 @@ if file1 and file2:
 
             # Criando um DataFrame para exibir os resultados
             resultados_df = pd.DataFrame(
-                [{"Gestor": gestor, "Total": total} for gestor, total in novo_gestor.items()]
+                [{"Gestor": gestor, "AUM": total} for gestor, total in novo_gestor.items()]
             )
 
             # Ajustando o indice da tabela
