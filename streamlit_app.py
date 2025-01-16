@@ -57,6 +57,9 @@ if file1 and file2:
                 [{"Gestor": gestor, "Total": total} for gestor, total in novo_gestor.items()]
             )
 
+            # Ajustando o indice da tabela
+            resultados_df.index = range(1, len(resultados_df) + 1)
+
             # Exibindo os resultados como uma tabela no Streamlit
             st.table(resultados_df.style.format({"Total": "R$ {:,.2f}"}))
         else:
