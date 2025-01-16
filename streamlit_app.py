@@ -52,7 +52,7 @@ if file1 and file2:
         if novo_gestor:
             st.success("Novos Gestores Encontrados (Ordenados por Total - Decrescente):")
             for gestor, total in novo_gestor.items():
-                st.write(f"- {gestor}: Total = {total}")
+                st.write(f"- {gestor}     |    AUM: {total}")
         else:
             st.info("Nenhum novo gestor encontrado.")
 
