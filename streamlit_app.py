@@ -51,8 +51,14 @@ if file1 and file2:
         st.subheader("Resultados")
         if novo_gestor:
             st.success("Novos Gestores Encontrados (Ordenados por Total - Decrescente):")
-            for gestor, total in novo_gestor.items():
-                st.write(f"- {gestor}     |    AUM: {total}")
+
+            # Criando um DataFrame para exibir os resultados
+            resultados_df = pd.DataFrame(
+                [{"Gestor": gestor, "Total": total} for gestor, total in novo_gestor.items()]
+            )
+
+            # Exibindo os resultados como uma tabela no Streamlit
+            st.dataframe(resultados_df.style.format({"Total": "R$ {:,.2f}"}))
         else:
             st.info("Nenhum novo gestor encontrado.")
 
