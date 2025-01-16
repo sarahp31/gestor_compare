@@ -23,10 +23,10 @@ if file1 and file2:
         df2 = df2.iloc[4:]
 
         # Redefinindo o nome das colunas
-        df1.columns = df1.iloc[0]
+        df1.columns = df1.iloc[0].str.replace("\n", "").str.strip()
         df1 = df1[1:]
 
-        df2.columns = df2.iloc[0]
+        df2.columns = df2.iloc[0].str.replace("\n", "").str.strip()
         df2 = df2[1:]
 
         # Limpando valores nulos nas colunas de interesse
