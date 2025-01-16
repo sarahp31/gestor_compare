@@ -61,7 +61,7 @@ if file1 and file2:
             resultados_df.index = range(1, len(resultados_df) + 1)
 
             # Exibindo os resultados como uma tabela no Streamlit
-            st.table(resultados_df.style.format({"Total": "R$ {:,.2f}"}))
+            st.table(resultados_df.style.format({"AUM": "R$ {:,.2f}"}))
         else:
             st.info("Nenhum novo gestor encontrado.")
 
