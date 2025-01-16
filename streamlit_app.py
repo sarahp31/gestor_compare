@@ -58,7 +58,7 @@ if file1 and file2:
             )
 
             # Exibindo os resultados como uma tabela no Streamlit
-            st.dataframe(resultados_df.style.format({"Total": "R$ {:,.2f}"}))
+            st.table(resultados_df.style.format({"Total": "R$ {:,.2f}"}))
         else:
             st.info("Nenhum novo gestor encontrado.")
 
