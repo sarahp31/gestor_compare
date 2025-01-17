@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 
 # Configurações básicas do app
-st.set_page_config(page_title="Comparador de Gestoras", layout="centered")
+st.set_page_config(page_title="Novas Gestoras", layout="centered")
 
 # Título da aplicação
-st.title("Comparador de Gestoras")
+st.title("Novas Gestoras")
 
 # Upload dos arquivos
 st.subheader("Upload de Arquivos Excel")
