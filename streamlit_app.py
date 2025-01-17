@@ -50,7 +50,7 @@ if file1 and file2:
         # Exibindo os resultados
         st.subheader("Resultados")
         if novo_gestor:
-            st.success("Novos Gestores Encontrados:")
+            st.success("Novas Gestoras Encontradas:")
 
             # Criando um DataFrame para exibir os resultados
             resultados_df = pd.DataFrame(
